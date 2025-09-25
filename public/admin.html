@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Orders</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: #d63384;
+      color: white;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    tr:hover {
+      background: #ffe6f0;
+    }
+
+    td {
+      color: #333;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Zomoggy's Kitchen</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="admin.html" class="active">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>All Orders</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Dish</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTable"></tbody>
+    </table>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const tbody = document.getElementById("ordersTable");
+
+      if (orders.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="empty-message">No orders yet.</td></tr>`;
+      } else {
+        orders.forEach(o => {
+          const row = `<tr>
+            <td>${o.name}</td>
+            <td>${o.phone}</td>
+            <td>${o.address}</td>
+            <td>${o.dish}</td>
+            <td>${o.qty}</td>
+            <td>₹${o.total}</td>
+            <td>${o.payment}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      }
+    });
+  </script>
+</body>
+</html>

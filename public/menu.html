@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Zomoggy's Kitchen</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="logo">Zomoggy's Kitchen</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>  
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container">
+    <h1 class="page-title">Our Delicious Menu</h1>
+
+    <!-- ===== Category Cards ===== -->
+<section class="menu-categories">
+  <a href="menu.html?category=Cake" class="category-card">
+    <img src="images/cake.jpg" alt="Cakes">
+    <h2>Cakes</h2>
+  </a>
+
+  <a href="menu.html?category=Drinks" class="category-card">
+    <img src="images/drinks.jpg" alt="Drinks">
+    <h2>Drinks</h2>
+  </a>
+</section>
+
+<!-- ===== Search + Filters ===== -->
+<div class="menu-filters">
+  <input type="text" id="search-input" placeholder="Search menu items...">
+  <select id="category-select">
+    <option value="all">All Categories</option>
+    <option value="Cake">Cakes</option>
+    <option value="Drinks">Drinks</option>
+  </select>
+</div>
+
+
+    <!-- ===== Menu Grid ===== -->
+    <div class="menu-grid" id="menu-items"></div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>&copy; 2025 Zomoggy's Kitchen. All rights reserved.</p>
+  </footer>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>
